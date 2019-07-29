@@ -1,0 +1,28 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+
+#android studio
+/.idea/misc.xml
+/.idea/vcs.xml
+/.idea/gradle.xml
+/.idea
+
+# travis ci 
+keystore.properties
+testUtils.jks
+keystore.tar
+
+# build
+app/release
+app/build
