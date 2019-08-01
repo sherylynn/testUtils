@@ -3,5 +3,6 @@
 
     <string name="app_name">testUtils</string>
     <string name="hello_world">Hello world!</string>
+    <string name="xposed_description">xposed testUtils</string>
 
 </resources>
