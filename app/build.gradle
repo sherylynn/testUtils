@@ -34,3 +34,21 @@ repositories {
     mavenCentral()
     jcenter()
 }
+afterEvaluate {
+    installDebug.doLast {
+        // 更新 VXP 中的 app
+        exec{
+            def pkg = android.defaultConfig.applicationId
+            commandLine android.adbExecutable, 'shell', 'am', 'broadcast', '-a', 'io.va.exposed.CMD', '-e', 'cmd', 'update', '-e', 'pkg', pkg
+        }
+        // 重启 VXP
+        exec{
+            commandLine android.adbExecutable, 'shell', 'am', 'broadcast', '-a', 'io.va.exposed.CMD', '-e', 'cmd', 'reboot'
+        }
+        // 重启 VXP 需要 hook 的 APP，需要知道它的包名
+        exec{
+            def pkg = 'com.sherylynn.testUtils'// 需要 hook 的 app ,这里hook自己
+            commandLine android.adbExecutable, 'shell', 'am', 'broadcast', '-a', 'io.va.exposed.CMD', '-e', 'cmd', 'launch', '-e', 'pkg', pkg
+        }
+    }
+}

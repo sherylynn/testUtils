@@ -13,7 +13,6 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage
 class MainHook : IXposedHookLoadPackage {
     @Throws(Throwable::class)
     override fun handleLoadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
-        /* 
         if (lpparam.packageName == BuildConfig.APPLICATION_ID) {
             XposedHelpers.findAndHookMethod(
                     MainActivity::class.java.name,
@@ -22,7 +21,6 @@ class MainHook : IXposedHookLoadPackage {
                     XC_MethodReplacement.returnConstant("I had Hooked!!!!")
             )
         }
-        */
         if (lpparam.packageName == "com.tencent.mm") {
             val hookClass = "com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceManagerUI"
             val hookMethodName = "onCreate"
